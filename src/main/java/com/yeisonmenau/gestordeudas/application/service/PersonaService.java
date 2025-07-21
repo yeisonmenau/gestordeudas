@@ -11,26 +11,24 @@ public class PersonaService implements PersonaUseCase {
 
     private final PersonaRepository personaRepository;
 
+
     @Override
     public Persona crearPersona(Persona persona) {
-
-
         return personaRepository.crearPersona(persona);
     }
 
     @Override
     public List<Persona> mostrarPersonas() {
-        List<Persona> personas = personaRepository.mostrarPersonas();
-        return personas;
+        return personaRepository.mostrarPersonas();
     }
 
     @Override
     public Persona actualizarPersona(Long idPersona, Persona persona) {
-        return null;
+        return personaRepository.actualizarPersona(idPersona, persona);
     }
 
     @Override
     public void eliminarPersona(Long idPersona) {
-
+        personaRepository.eliminarPersona(idPersona);
     }
 }

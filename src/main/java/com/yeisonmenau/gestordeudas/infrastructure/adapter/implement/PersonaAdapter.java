@@ -1,5 +1,6 @@
 package com.yeisonmenau.gestordeudas.infrastructure.adapter.implement;
 
+import com.yeisonmenau.gestordeudas.application.exception.PersonaNoEncontradaException;
 import com.yeisonmenau.gestordeudas.domain.persona.out.PersonaRepository;
 import com.yeisonmenau.gestordeudas.domain.persona.model.Persona;
 import com.yeisonmenau.gestordeudas.infrastructure.adapter.PersonaJpaRepository;
@@ -33,11 +34,19 @@ public class PersonaAdapter implements PersonaRepository {
 
     @Override
     public Persona actualizarPersona(Long idPersona, Persona persona) {
-        return null;
+        PersonaEntity existente = personaJpaRepository.findById(idPersona)
+                .orElseThrow(() -> new PersonaNoEncontradaException(idPersona));
+        existente.setPersonaCedula(persona.getPersonaCedula());
+        existente.setPersonaNombre(persona.getPersonaNombre());
+        existente.setPersonaFechaNacimiento(persona.getPersonaFechaNacimiento());
+        PersonaEntity personaActualizada = personaJpaRepository.save(existente);
+        return mapper.entityToDomain(personaActualizada);
     }
 
     @Override
     public void eliminarPersona(Long idPersona) {
-
+        PersonaEntity existente = personaJpaRepository.findById(idPersona)
+                .orElseThrow(() -> new PersonaNoEncontradaException(idPersona));
+        personaJpaRepository.delete(existente);
     }
 }

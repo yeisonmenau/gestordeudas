@@ -7,6 +7,7 @@ import com.yeisonmenau.gestordeudas.infrastructure.dto.response.PersonaResponseD
 import com.yeisonmenau.gestordeudas.infrastructure.mapper.PersonaMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,9 @@ public class PersonaController {
     private final PersonaMapper mapper;
 
     @PostMapping
-    public ResponseEntity<PersonaResponseDTO> crearPersona (@Valid @RequestBody PersonaRequestDTO personaRequestDTO){
+    public ResponseEntity<PersonaResponseDTO> crearPersona (
+            @Valid @RequestBody PersonaRequestDTO personaRequestDTO){
+
         Persona persona = mapper.requestToDomain(personaRequestDTO);
         Persona personaCreada = personaService.crearPersona(persona);
         PersonaResponseDTO response = mapper.domainToPersonaResponse(personaCreada);
@@ -35,5 +38,21 @@ public class PersonaController {
                 .map(mapper::domainToPersonaResponse)
                 .toList();
         return ResponseEntity.ok(personasResponse);
+    }
+    @PutMapping("/{idPersona}")
+    public ResponseEntity<PersonaResponseDTO> actualizarPersona (
+            @PathVariable Long idPersona,
+            @Valid @RequestBody PersonaRequestDTO personaRequestDTO){
+
+        Persona persona = mapper.requestToDomain(personaRequestDTO);
+        Persona personaActualizada = personaService.actualizarPersona(idPersona, persona);
+        PersonaResponseDTO response = mapper.domainToPersonaResponse(personaActualizada);
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{idPersona}")
+    public ResponseEntity<Void> eliminarPersona(@PathVariable Long idPersona) {
+        personaService.eliminarPersona(idPersona);
+        return ResponseEntity.noContent().build();
     }
 }
