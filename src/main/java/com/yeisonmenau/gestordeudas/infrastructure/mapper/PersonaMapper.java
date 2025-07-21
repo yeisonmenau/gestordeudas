@@ -21,7 +21,7 @@ public class PersonaMapper {
     }
     public Persona entityToDomain (PersonaEntity personaEntidad){
         return new Persona(
-                null,
+                personaEntidad.getPersonaId(),
                 personaEntidad.getPersonaCedula(),
                 personaEntidad.getPersonaNombre(),
                 personaEntidad.getPersonaFechaNacimiento());

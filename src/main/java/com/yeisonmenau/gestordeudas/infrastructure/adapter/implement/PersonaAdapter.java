@@ -25,7 +25,10 @@ public class PersonaAdapter implements PersonaRepository {
 
     @Override
     public List<Persona> mostrarPersonas() {
-        return List.of();
+        List<PersonaEntity> personas = personaJpaRepository.findAll();
+        return personas.stream()
+                .map(mapper::entityToDomain)
+                .toList();
     }
 
     @Override
