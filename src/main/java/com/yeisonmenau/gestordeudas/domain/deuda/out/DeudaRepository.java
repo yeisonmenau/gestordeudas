@@ -11,4 +11,5 @@ public interface DeudaRepository {
     Deuda actualizarDeuda (Long idDeuda, Deuda deuda);
     String eliminarDeuda (Long idDeuda);
     String saldarDeuda (Long idDeuda);
+    List<Deuda> mostrarDeudasPorPersona(Long idPersona);
 }

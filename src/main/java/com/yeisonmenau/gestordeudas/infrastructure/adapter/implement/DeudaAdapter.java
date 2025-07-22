@@ -45,4 +45,9 @@ public class DeudaAdapter implements DeudaRepository {
     public String saldarDeuda(Long idDeuda) {
         return "";
     }
+
+    @Override
+    public List<Deuda> mostrarDeudasPorPersona(Long idPersona) {
+        return List.of();
+    }
 }
