@@ -28,7 +28,10 @@ public class DeudaAdapter implements DeudaRepository {
 
     @Override
     public List<Deuda> mostrarDeudas() {
-        return List.of();
+        List<DeudaEntity> deudasRegistradas = deudaJpaRepository.findAll();
+        return deudasRegistradas.stream()
+                .map(mapper::entityToDomain)
+                .toList();
     }
 
     @Override
