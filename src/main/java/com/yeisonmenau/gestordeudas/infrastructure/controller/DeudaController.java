@@ -43,5 +43,16 @@ public class DeudaController {
         DeudaResponseDTO response = mapper.domainToDeudaResponse(deudaActualizada);
         return ResponseEntity.ok(response);
     }
+    @DeleteMapping("/{idDeuda}")
+    public ResponseEntity<String> eliminarDeuda(@PathVariable Long idDeuda) {
+        String respuesta = deudaService.eliminarDeuda(idDeuda);
+        return ResponseEntity.ok(respuesta);
+    }
+    @PutMapping("/saldar/{idDeuda}")
+    public ResponseEntity<String> saldarDeuda(@PathVariable Long idDeuda) {
+        String respuesta = deudaService.saldarDeuda(idDeuda);
+        return ResponseEntity.ok(respuesta);
+    }
+
 
 }

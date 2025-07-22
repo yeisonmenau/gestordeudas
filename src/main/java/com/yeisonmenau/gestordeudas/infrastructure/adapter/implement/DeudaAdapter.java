@@ -46,12 +46,19 @@ public class DeudaAdapter implements DeudaRepository {
 
     @Override
     public String eliminarDeuda(Long idDeuda) {
-        return "";
+        DeudaEntity existente = deudaJpaRepository.findById(idDeuda)
+                .orElseThrow(() -> new DeudaNoEncontradaException(idDeuda));
+        deudaJpaRepository.delete(existente);
+        return "Deuda con ID " + idDeuda + " eliminada correctamente.";
     }
 
     @Override
     public String saldarDeuda(Long idDeuda) {
-        return "";
+        DeudaEntity existente = deudaJpaRepository.findById(idDeuda)
+                .orElseThrow(() -> new DeudaNoEncontradaException(idDeuda));
+        existente.setPagado(true);
+        deudaJpaRepository.save(existente);
+        return "Deuda de " + existente.getPersona().getPersonaNombre() + " con ID " + idDeuda + " saldada correctamente.";
     }
 
     @Override
