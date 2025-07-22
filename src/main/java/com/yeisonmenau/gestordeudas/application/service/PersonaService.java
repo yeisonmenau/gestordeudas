@@ -11,7 +11,6 @@ public class PersonaService implements PersonaUseCase {
 
     private final PersonaRepository personaRepository;
 
-
     @Override
     public Persona crearPersona(Persona persona) {
         return personaRepository.crearPersona(persona);

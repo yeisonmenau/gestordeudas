@@ -6,7 +6,8 @@ import lombok.Data;
 import java.time.LocalDate;
 @Data
 public class DeudaRequestDTO {
-    private Persona persona;
+    private Long personaId;
+    private String personaCedula;
     private double deudaValor;
     private LocalDate deudaFecha;
     private LocalDate deudaFechaMaximaPago;

@@ -16,5 +16,5 @@ public class Deuda {
     private double deudaValor;
     private LocalDate deudaFecha;
     private LocalDate deudaFechaMaximaPago;
-    private Boolean pagado = false;
+    private Boolean pagado;
 }

@@ -44,9 +44,10 @@ public class PersonaAdapter implements PersonaRepository {
     }
 
     @Override
-    public void eliminarPersona(Long idPersona) {
+    public String eliminarPersona(Long idPersona) {
         PersonaEntity existente = personaJpaRepository.findById(idPersona)
                 .orElseThrow(() -> new PersonaNoEncontradaException(idPersona));
         personaJpaRepository.delete(existente);
+        return "Persona con ID " + idPersona + " eliminada correctamente.";
     }
 }

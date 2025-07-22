@@ -25,5 +25,5 @@ public class DeudaEntity {
     private LocalDate deudaFecha;
     @Column (name = "deuda_fecha_maxima_pago")
     private LocalDate deudaFechaMaximaPago;
-    private Boolean pagado = false;
+    private Boolean pagado;
 }

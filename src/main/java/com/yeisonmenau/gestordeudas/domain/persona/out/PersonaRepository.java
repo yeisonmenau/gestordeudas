@@ -10,5 +10,5 @@ public interface PersonaRepository {
     Persona crearPersona (Persona persona);
     List<Persona> mostrarPersonas ();
     Persona actualizarPersona (Long idPersona, Persona persona);
-    void eliminarPersona (Long idPersona);
+    String eliminarPersona (Long idPersona);
 }

@@ -9,5 +9,6 @@ public interface DeudaRepository {
     Deuda crearDeuda (Deuda deuda);
     List<Deuda> mostrarDeudas ();
     Deuda actualizarDeuda (Long idDeuda, Deuda deuda);
-    void eliminarDeuda (Long idDeuda);
+    String eliminarDeuda (Long idDeuda);
+    String saldarDeuda (Long idDeuda);
 }
