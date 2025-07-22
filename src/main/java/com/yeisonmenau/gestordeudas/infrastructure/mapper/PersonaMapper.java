@@ -37,6 +37,7 @@ public class PersonaMapper {
 
     public PersonaResponseDTO entityToPersonaResponse (PersonaEntity personaEntidad){
         return new PersonaResponseDTO(
+                personaEntidad.getPersonaId(),
                 personaEntidad.getPersonaCedula(),
                 personaEntidad.getPersonaNombre(),
                 Period.between(personaEntidad.getPersonaFechaNacimiento(), LocalDate.now()).getYears());
@@ -50,6 +51,7 @@ public class PersonaMapper {
     }
     public PersonaResponseDTO domainToPersonaResponse (Persona persona){
         return new PersonaResponseDTO(
+                persona.getPersonaId(),
                 persona.getPersonaCedula(),
                 persona.getPersonaNombre(),
                 Period.between(persona.getPersonaFechaNacimiento(), LocalDate.now()).getYears());
