@@ -19,5 +19,12 @@ public class DeudaController {
     private final DeudaService deudaService;
     private final DeudaMapper mapper;
 
+    @PostMapping
+    public ResponseEntity<DeudaResponseDTO> crearDeuda(DeudaRequestDTO deudaRequestDTO) {
+        Deuda deuda = mapper.requestToDomain(deudaRequestDTO);
+        Deuda deudaCreada = deudaService.crearDeuda(deuda);
+        DeudaResponseDTO response = mapper.domainToDeudaResponse(deudaCreada);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
 
 }
