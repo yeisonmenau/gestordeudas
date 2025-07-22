@@ -1,5 +1,6 @@
 package com.yeisonmenau.gestordeudas.infrastructure.adapter.implement;
 
+import com.yeisonmenau.gestordeudas.application.exception.DeudaNoEncontradaException;
 import com.yeisonmenau.gestordeudas.domain.deuda.model.Deuda;
 import com.yeisonmenau.gestordeudas.domain.deuda.out.DeudaRepository;
 import com.yeisonmenau.gestordeudas.infrastructure.adapter.DeudaJpaRepository;
@@ -16,7 +17,6 @@ import java.util.List;
 public class DeudaAdapter implements DeudaRepository {
 
     private final DeudaJpaRepository deudaJpaRepository;
-    private final PersonaJpaRepository personaJpaRepository;
     private final DeudaMapper mapper;
 
     @Override
@@ -36,7 +36,12 @@ public class DeudaAdapter implements DeudaRepository {
 
     @Override
     public Deuda actualizarDeuda(Long idDeuda, Deuda deuda) {
-        return null;
+        DeudaEntity existente = deudaJpaRepository.findById(idDeuda)
+                .orElseThrow(() -> new DeudaNoEncontradaException(idDeuda));
+        DeudaEntity deudaActualizada = mapper.domainToEntity(deuda);
+        deudaActualizada.setDeudaId(existente.getDeudaId());
+        DeudaEntity deudaGuardada = deudaJpaRepository.save(deudaActualizada);
+        return mapper.entityToDomain(deudaGuardada);
     }
 
     @Override

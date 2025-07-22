@@ -8,10 +8,7 @@ import com.yeisonmenau.gestordeudas.infrastructure.mapper.DeudaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,7 +26,6 @@ public class DeudaController {
         DeudaResponseDTO response = mapper.domainToDeudaResponse(deudaCreada);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-
     @GetMapping
     public ResponseEntity<List<DeudaResponseDTO>> mostrarDeudas() {
         List<Deuda> deudasDominio = deudaService.mostrarDeudas();
@@ -37,6 +33,15 @@ public class DeudaController {
                 .map(mapper::domainToDeudaResponse)
                 .toList();
         return ResponseEntity.ok(deudasResponse);
+    }
+    @PutMapping("/{idDeuda}")
+    public ResponseEntity<DeudaResponseDTO> actualizarDeuda(
+            @PathVariable Long idDeuda,
+            @RequestBody DeudaRequestDTO deudaRequestDTO) {
+        Deuda deuda = mapper.requestToDomain(deudaRequestDTO);
+        Deuda deudaActualizada = deudaService.actualizarDeuda(idDeuda, deuda);
+        DeudaResponseDTO response = mapper.domainToDeudaResponse(deudaActualizada);
+        return ResponseEntity.ok(response);
     }
 
 }
