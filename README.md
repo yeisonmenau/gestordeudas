@@ -101,10 +101,10 @@ src/main/java/com/yeisonmenau/gestordeudas/
 **Response**: `201 CREATED`
 ```json
 {
-  "personaId": long,
+  "personaId": "long",
   "personaCedula": "string",
   "personaNombre": "string", 
-  "personaEdad": integer
+  "personaEdad": "integer"
 }
 ```
 
@@ -114,10 +114,10 @@ src/main/java/com/yeisonmenau/gestordeudas/
 ```json
 [
   {
-    "personaId": long,
+    "personaId": "long",
     "personaCedula": "string",
     "personaNombre": "string",
-    "personaEdad": integer
+    "personaEdad": "integer"
   }
 ]
 ```
@@ -143,8 +143,8 @@ src/main/java/com/yeisonmenau/gestordeudas/
 **Request Body**:
 ```json
 {
-  "personaId": long (requerido),
-  "deudaValor": double (requerido),
+  "personaId": "long (requerido)",
+  "deudaValor": "double (requerido)",
   "deudaFecha": "date (requerido)",
   "deudaFechaMaximaPago": "date (requerido)"
 }
@@ -152,13 +152,13 @@ src/main/java/com/yeisonmenau/gestordeudas/
 **Response**: `201 CREATED`
 ```json
 {
-  "deudaId": long,
+  "deudaId": "long",
   "nombrePersona": "string",
   "cedulaPersona": "string",
-  "deudaValor": double,
+  "deudaValor": "double",
   "deudaFecha": "date",
   "deudaFechaMaximaPago": "date",
-  "pagado": boolean
+  "pagado": "boolean"
 }
 ```
 
