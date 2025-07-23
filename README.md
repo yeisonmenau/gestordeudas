@@ -268,13 +268,12 @@ src/main/java/com/yeisonmenau/gestordeudas/
 ## Configuración e Inicio del Proyecto
 
 ### Prerrequisitos
-- Java 21 o superior
-- Maven 3.6+
+- Java 24 
 - IDE compatible con Spring Boot
 
 
 ### Configuración de Base de Datos
-Para desarrollo, el proyecto usa H2 en memoria. Para cambiarlo a Postgres, configurar en `application.properties`:
+Para desarrollo, el proyecto usa H2 en memoria. Para cambiarlo a Postgres, configurar en `application.properties`
 
 ### Acceso a la Aplicación
 - **API Base URL**: `http://localhost:8080`
