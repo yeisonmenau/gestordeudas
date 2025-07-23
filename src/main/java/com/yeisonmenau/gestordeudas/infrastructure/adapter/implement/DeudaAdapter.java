@@ -63,7 +63,8 @@ public class DeudaAdapter implements DeudaRepository {
                 .orElseThrow(() -> new DeudaNoEncontradaException(idDeuda));
         existente.setPagado(true);
         deudaJpaRepository.save(existente);
-        return "Deuda de " + existente.getPersona().getPersonaNombre() + " con ID " + idDeuda + " saldada correctamente.";
+        return "Deuda de " + existente.getPersona().getPersonaNombre() +
+                " con ID " + idDeuda + " por un valor de $" + existente.getDeudaValor() + " saldada correctamente.";
     }
 
     @Override
