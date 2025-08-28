@@ -61,6 +61,11 @@ public class DeudaController {
                 .toList();
         return ResponseEntity.ok(deudasResponse);
     }
+    @GetMapping("/total/{idPersona}")
+    public ResponseEntity<String> totalDeudasPorPersona(@PathVariable Long idPersona) {
+        String totalDeudas = deudaService.totalDeudasPorPersona(idPersona);
+        return ResponseEntity.ok(totalDeudas);
+    }
 
 
 }

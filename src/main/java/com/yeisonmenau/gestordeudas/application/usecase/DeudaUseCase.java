@@ -11,4 +11,5 @@ public interface DeudaUseCase {
     String eliminarDeuda (Long idDeuda);
     String saldarDeuda (Long idDeuda);
     List<Deuda> mostrarDeudasPorPersona(Long idPersona);
+    String totalDeudasPorPersona(Long idPersona);
 }

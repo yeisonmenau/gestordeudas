@@ -39,4 +39,9 @@ public class DeudaService implements DeudaUseCase {
     public List<Deuda> mostrarDeudasPorPersona(Long idPersona) {
         return deudaRepository.mostrarDeudasPorPersona(idPersona);
     }
+
+    @Override
+    public String totalDeudasPorPersona(Long idPersona) {
+        return deudaRepository.totalDeudasPorPersona(idPersona);
+    }
 }

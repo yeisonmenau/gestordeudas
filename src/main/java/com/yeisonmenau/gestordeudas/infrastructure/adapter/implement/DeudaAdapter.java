@@ -77,4 +77,14 @@ public class DeudaAdapter implements DeudaRepository {
                 .map(mapper::entityToDomain)
                 .toList();
     }
+
+    @Override
+    public String totalDeudasPorPersona(Long idPersona) {
+        List<Deuda> deudasDomain = mostrarDeudasPorPersona(idPersona);
+        Double total = deudasDomain.stream()
+                .filter(deuda -> !deuda.getPagado())
+                .mapToDouble(Deuda::getDeudaValor)
+                .sum();
+        return "$ " + total;
+    }
 }
