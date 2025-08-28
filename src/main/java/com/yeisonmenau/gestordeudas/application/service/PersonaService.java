@@ -27,7 +27,9 @@ public class PersonaService implements PersonaUseCase {
     }
 
     @Override
-    public String eliminarPersona(Long idPersona) {
-        return personaRepository.eliminarPersona(idPersona);
+    public void eliminarPersona(Long idPersona) {
+        personaRepository.eliminarPersona(idPersona);
     }
+
+
 }

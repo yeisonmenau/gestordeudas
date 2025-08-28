@@ -8,5 +8,5 @@ public interface PersonaUseCase {
     Persona crearPersona (Persona persona);
     List<Persona> mostrarPersonas ();
     Persona actualizarPersona (Long idPersona, Persona persona);
-    String eliminarPersona (Long idPersona);
+    void eliminarPersona (Long idPersona);
 }
