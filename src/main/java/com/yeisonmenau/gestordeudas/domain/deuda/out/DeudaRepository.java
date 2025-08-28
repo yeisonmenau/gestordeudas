@@ -13,4 +13,5 @@ public interface DeudaRepository {
     String saldarDeuda (Long idDeuda);
     List<Deuda> mostrarDeudasPorPersona(Long idPersona);
     String totalDeudasPorPersona(Long idPersona);
+    List<Deuda> mostrarDeudasPorEstadoYPersona(Boolean estado, Long idPersona);
 }

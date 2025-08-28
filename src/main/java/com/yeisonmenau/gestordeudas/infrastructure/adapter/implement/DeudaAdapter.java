@@ -87,4 +87,12 @@ public class DeudaAdapter implements DeudaRepository {
                 .sum();
         return "$ " + total;
     }
+
+    @Override
+    public List<Deuda> mostrarDeudasPorEstadoYPersona(Boolean estado, Long idPersona) {
+        List<Deuda> deudasDomain = mostrarDeudasPorPersona(idPersona);
+        return deudasDomain.stream()
+                .filter(deuda -> deuda.getPagado().equals(estado))
+                .toList();
+    }
 }

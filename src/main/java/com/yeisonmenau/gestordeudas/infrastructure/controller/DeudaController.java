@@ -66,6 +66,15 @@ public class DeudaController {
         String totalDeudas = deudaService.totalDeudasPorPersona(idPersona);
         return ResponseEntity.ok(totalDeudas);
     }
+    @GetMapping("/persona/{idPersona}/estado/{estado}")
+    public ResponseEntity<List<DeudaResponseDTO>> mostrarDeudasPorEstadoYPersona(
+            @PathVariable Boolean estado, @PathVariable Long idPersona) {
+        List<Deuda> deudasFiltradas = deudaService.mostrarDeudasPorEstadoYPersona(estado, idPersona);
+        List<DeudaResponseDTO> deudasResponse = deudasFiltradas.stream()
+                .map(mapper::domainToDeudaResponse)
+                .toList();
+        return ResponseEntity.ok(deudasResponse);
+    }
 
 
 }
